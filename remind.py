@@ -84,6 +84,7 @@ try:
             current_time = datetime.datetime.now()
             until_reminder = current_time + datetime.timedelta(seconds=until_reminder)
             until_reminder = until_reminder.strftime('%Y-%m-%d %H:%M:%S')
+            current_time = current_time.strftime('%Y-%m-%d %H:%M:%S')
             cursor.execute('INSERT INTO reminders (NEXT_REMINDER, MADE_ON, reminder) VALUES (?, ?, ?)', (until_reminder, current_time, new_reminder))
             print(f"New reminder added: {new_reminder}")
         elif command in ["delay", 'pushback', 'postpone', 'wait']:
